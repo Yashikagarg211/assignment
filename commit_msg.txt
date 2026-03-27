@@ -1,0 +1,5 @@
+Initial commit: Flipkart clone full-stack e-commerce platform
+
+Frontend: React.js + Vite + CSS Modules + Zustand
+Backend: Express.js + Prisma ORM + PostgreSQL
+Features: Product listing, detail, cart, checkout, order history, responsive design

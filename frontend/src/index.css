@@ -1,0 +1,109 @@
+/* =============================================
+   FLIPKART CLONE — GLOBAL DESIGN SYSTEM
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #2874f0;
+  --blue-dark: #1a5dc8;
+  --blue-light: #e8f0fe;
+  --yellow: #ff9f00;
+  --yellow-light: #fff3cd;
+  --bg: #f1f3f6;
+  --white: #ffffff;
+  --text: #212121;
+  --text-secondary: #878787;
+  --text-muted: #adb5bd;
+  --green: #388e3c;
+  --red: #ff6161;
+  --red-dark: #c62828;
+  --border: #e0e0e0;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
+  --radius: 4px;
+  --font: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: var(--font); border: none; outline: none; }
+input, select, textarea { font-family: var(--font); outline: none; }
+img { max-width: 100%; }
+
+/* ---- Utilities ---- */
+.container { max-width: 1232px; margin: 0 auto; padding: 0 16px; }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.text-blue { color: var(--blue); }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-muted { color: var(--text-secondary); }
+.fw-500 { font-weight: 500; }
+.fw-700 { font-weight: 700; }
+.fs-12 { font-size: 12px; }
+.fs-13 { font-size: 13px; }
+.fs-14 { font-size: 14px; }
+.fs-18 { font-size: 18px; }
+.fs-22 { font-size: 22px; }
+
+/* ---- Buttons ---- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius); font-size: 14px; font-weight: 500; transition: all 0.15s ease; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-yellow { background: var(--yellow); color: #fff; }
+.btn-yellow:hover { background: #e08c00; }
+.btn-outline { background: transparent; border: 1px solid var(--blue); color: var(--blue); }
+.btn-outline:hover { background: var(--blue-light); }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:hover { background: var(--red-dark); }
+.btn-sm { padding: 6px 14px; font-size: 12px; }
+.btn-lg { padding: 16px 40px; font-size: 16px; font-weight: 700; width: 100%; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ---- Card ---- */
+.card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+/* ---- Badge ---- */
+.badge { display: inline-block; padding: 2px 6px; border-radius: 2px; font-size: 11px; font-weight: 700; }
+.badge-green { background: var(--green); color: #fff; }
+.badge-red { background: var(--red); color: #fff; }
+
+/* ---- Spinner ---- */
+.spinner-wrap { display: flex; justify-content: center; align-items: center; padding: 80px 0; }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Page layout ---- */
+.page-layout { display: flex; gap: 16px; max-width: 1232px; margin: 16px auto; padding: 0 16px; }
+
+/* ---- Quantity Control ---- */
+.qty-control { display: flex; align-items: center; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.qty-btn { width: 32px; height: 32px; background: var(--bg); border: none; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); transition: background 0.15s; }
+.qty-btn:hover { background: #e0e0e0; }
+.qty-num { min-width: 40px; text-align: center; font-weight: 500; font-size: 14px; padding: 0 4px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .container { padding: 0 12px; }
+}
+@media (max-width: 768px) {
+  .page-layout { flex-direction: column; margin: 8px auto; padding: 0 8px; }
+  .hide-mobile { display: none; }
+  .btn-lg { padding: 14px 24px; font-size: 15px; }
+}
+@media (max-width: 480px) {
+  .page-layout { padding: 0 6px; }
+  .btn { padding: 9px 16px; font-size: 13px; }
+  .btn-sm { padding: 5px 10px; font-size: 11px; }
+}
+

@@ -1,0 +1,175 @@
+.navbar {
+  background: var(--blue);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.inner {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.logo { display: flex; flex-direction: column; line-height: 1; min-width: 80px; flex-shrink: 0; }
+.logoText { color: #fff; font-size: 20px; font-weight: 700; font-style: italic; letter-spacing: -0.5px; }
+.logoTagline { color: #ffe500; font-size: 11px; display: flex; align-items: center; gap: 2px; }
+.logoTagline em { font-style: italic; font-size: 11px; }
+
+/* Desktop search */
+.desktopSearch {
+  flex: 1;
+  display: flex;
+  max-width: 600px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: #fff;
+}
+.searchInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  font-size: 14px;
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+.searchInput::placeholder { color: var(--text-muted); }
+.searchBtn {
+  background: #fff;
+  border: none;
+  padding: 0 14px;
+  cursor: pointer;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.searchBtn:hover { background: var(--blue-light); }
+
+/* Right actions */
+.actions { display: flex; align-items: center; gap: 16px; margin-left: auto; flex-shrink: 0; }
+.navLink { color: #fff; font-size: 14px; font-weight: 500; padding: 4px 2px; transition: opacity 0.15s; white-space: nowrap; }
+.navLink:hover { opacity: 0.85; }
+
+.cartBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.cartBtn:hover { opacity: 0.85; }
+.cartLabel { white-space: nowrap; }
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--yellow);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* Mobile search icon (hidden on desktop) */
+.mobileAction {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.barOpen1 { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transform: translateY(7px) rotate(45deg); transition: all 0.25s ease; }
+.barOpen2 { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; opacity: 0; transition: all 0.25s ease; }
+.barOpen3 { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transform: translateY(-7px) rotate(-45deg); transition: all 0.25s ease; }
+
+/* Mobile search bar */
+.mobileSearchWrap {
+  background: var(--blue-dark);
+  padding: 10px 16px;
+  animation: slideDown 0.2s ease;
+}
+.mobileSearchForm {
+  display: flex;
+  background: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mobileSearchInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  font-size: 14px;
+  color: var(--text);
+  background: transparent;
+}
+.mobileSearchInput::placeholder { color: var(--text-muted); }
+
+/* Mobile nav menu drawer */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background: #1a5dc8;
+  animation: slideDown 0.2s ease;
+}
+.mobileMenuLink {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.15s;
+}
+.mobileMenuLink:hover { background: rgba(255,255,255,0.1); }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+  .desktopSearch { display: none; }
+  .mobileAction { display: flex; }
+  .hamburger { display: flex; }
+  .navLink { display: none; }
+  .cartLabel { display: none; }
+  .actions { gap: 12px; }
+}
