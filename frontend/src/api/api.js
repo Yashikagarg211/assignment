@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: '/api', timeout: 10000 })
+// In dev: Vite proxy routes /api -> localhost:8000
+// In production: set VITE_API_URL to your deployed backend URL
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
+
+const api = axios.create({ baseURL: BASE_URL, timeout: 10000 })
 
 // Products
 export const getProducts = (params) => api.get('/products', { params }).then(r => r.data)
