@@ -1,5 +1,0 @@
-fix: add Netlify router fix and production API URL support
-
-- Add frontend/public/_redirects for React Router on Netlify
-- Update api.js to use VITE_API_URL env var in production
-- Add render.yaml for backend deployment on Render
