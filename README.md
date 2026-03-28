@@ -2,10 +2,6 @@
 
 A full-stack e-commerce web application that closely replicates Flipkart's design and user experience, built for the SDE Intern Fullstack Assignment.
 
-## 🚀 Live Demo
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000/api
-
 ---
 
 ## 🛠 Tech Stack
