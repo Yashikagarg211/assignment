@@ -10,10 +10,10 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: DATABASE_URL
-        sync: false          # set this manually in Render dashboard
+        sync: false          
       - key: FRONTEND_URL
-        sync: false          # set to your Netlify URL after deploy
+        sync: false         
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000         # Render assigns port via $PORT; 10000 is its default
+        value: 10000         
