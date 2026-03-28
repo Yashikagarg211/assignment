@@ -14,11 +14,16 @@ export default function HomePage() {
   const [categories, setCategories] = useState([])
   const [featured, setFeatured] = useState([])
   const [slide, setSlide] = useState(0)
+  const [apiOnline, setApiOnline] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
-    getCategories().then(setCategories).catch(console.error)
-    getProducts({ limit: 12, sort: 'rating' }).then(d => setFeatured(d.products)).catch(console.error)
+    getCategories()
+      .then(setCategories)
+      .catch(() => setApiOnline(false))
+    getProducts({ limit: 12, sort: 'rating' })
+      .then(d => setFeatured(d.products))
+      .catch(console.error)
     const timer = setInterval(() => setSlide(s => (s + 1) % HERO_SLIDES.length), 4000)
     return () => clearInterval(timer)
   }, [])
@@ -27,6 +32,17 @@ export default function HomePage() {
 
   return (
     <div>
+      {/* Offline banner */}
+      {!apiOnline && (
+        <div style={{
+          background: '#fff3cd', color: '#856404', padding: '10px 20px',
+          textAlign: 'center', fontSize: 13, fontWeight: 500,
+          borderBottom: '1px solid #ffc107'
+        }}>
+          ⚠️ Backend API is not connected — running in demo mode. Product data unavailable.
+          &nbsp;<a href="https://github.com/Yashikagarg211/assignment#setup" style={{color:'#0d6efd'}}>Setup guide →</a>
+        </div>
+      )}
       {/* Hero Banner */}
       <div className={styles.hero} style={{ background: s.bg }}>
         <div className={styles.heroContent}>
