@@ -4,7 +4,7 @@ import axios from 'axios'
 // In production: set VITE_API_URL to your deployed backend URL
 const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 
-const api = axios.create({ baseURL: BASE_URL, timeout: 10000 })
+const api = axios.create({ baseURL: BASE_URL, timeout: 55000 })
 
 // Intercept responses — if we get HTML back (Netlify 404 page) instead of JSON,
 // convert it to a clean error so React components can handle it gracefully

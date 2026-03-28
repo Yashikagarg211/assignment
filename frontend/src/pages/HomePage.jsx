@@ -15,34 +15,63 @@ export default function HomePage() {
   const [featured, setFeatured] = useState([])
   const [slide, setSlide] = useState(0)
   const [apiOnline, setApiOnline] = useState(true)
+  const [loading, setLoading] = useState(true)
+  const [slowLoad, setSlowLoad] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
+    // After 4 seconds without data, show "waking up backend" banner
+    const slowTimer = setTimeout(() => {
+      if (loading) setSlowLoad(true)
+    }, 4000)
+
     getCategories()
       .then(setCategories)
       .catch(() => setApiOnline(false))
+
     getProducts({ limit: 12, sort: 'rating' })
-      .then(d => setFeatured(d.products))
-      .catch(console.error)
+      .then(d => {
+        setFeatured(d.products)
+        setLoading(false)
+        setSlowLoad(false)
+      })
+      .catch(() => {
+        setLoading(false)
+        setApiOnline(false)
+      })
+
     const timer = setInterval(() => setSlide(s => (s + 1) % HERO_SLIDES.length), 4000)
-    return () => clearInterval(timer)
+    return () => { clearInterval(timer); clearTimeout(slowTimer) }
   }, [])
 
   const s = HERO_SLIDES[slide]
 
   return (
     <div>
-      {/* Offline banner */}
+      {/* Waking up banner — shows when backend is slow to respond */}
+      {slowLoad && apiOnline && (
+        <div style={{
+          background: '#e8f4fd', color: '#0d47a1', padding: '10px 20px',
+          textAlign: 'center', fontSize: 13, fontWeight: 500,
+          borderBottom: '1px solid #90caf9', display: 'flex',
+          alignItems: 'center', justifyContent: 'center', gap: 10
+        }}>
+          <span style={{ display: 'inline-block', width: 14, height: 14, border: '2px solid #0d47a1', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+          ⏳ Backend is waking up (Render free tier) — products will appear in ~30 seconds…
+          <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+        </div>
+      )}
+      {/* Offline banner — shows when backend is completely unreachable */}
       {!apiOnline && (
         <div style={{
           background: '#fff3cd', color: '#856404', padding: '10px 20px',
           textAlign: 'center', fontSize: 13, fontWeight: 500,
           borderBottom: '1px solid #ffc107'
         }}>
-          ⚠️ Backend API is not connected — running in demo mode. Product data unavailable.
-          &nbsp;<a href="https://github.com/Yashikagarg211/assignment#setup" style={{color:'#0d6efd'}}>Setup guide →</a>
+          ⚠️ Backend API is not connected — product data unavailable. Please try refreshing in 30 seconds.
         </div>
       )}
+
       {/* Hero Banner */}
       <div className={styles.hero} style={{ background: s.bg }}>
         <div className={styles.heroContent}>
