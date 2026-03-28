@@ -81,7 +81,6 @@ node prisma/seed.js
 npm run dev
 ```
 
-Backend runs on **http://localhost:8000**
 
 ### 2. Frontend Setup
 
@@ -92,8 +91,6 @@ npm install
 # Start frontend
 npm run dev
 ```
-
-Frontend runs on **http://localhost:3000**
 
 ---
 
