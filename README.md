@@ -1,6 +1,6 @@
 # Flipkart Clone — E-Commerce Platform
 
-A full-stack e-commerce web application that closely replicates Flipkart's design and user experience, built for the SDE Intern Fullstack Assignment.
+A full-stack e-commerce web application that closely replicates Flipkart's design and user experience.
 
 ---
 
